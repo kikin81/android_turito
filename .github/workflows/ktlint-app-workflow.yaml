@@ -1,6 +1,6 @@
-name: Build
+name: ktlint
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   pull_request:
@@ -18,4 +18,4 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
       - name: Build the app
-        run: ./gradlew build
+        run: ./gradlew ktlintCheck
