@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.android.AndroidEntryPoint
 import us.kikin.apps.android.turito.databinding.BusinessListFragmentBinding
 
+@AndroidEntryPoint
 class BusinessList : Fragment() {
 
     private var _binding: BusinessListFragmentBinding? = null

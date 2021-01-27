@@ -6,6 +6,7 @@ buildscript {
     ext.lifecycle_version = "2.2.0"
     ext.retrofit_version = "2.9.0"
     ext.okhttp_version = "4.9.0"
+    ext.hilt_version = '2.31.2-alpha'
     repositories {
         google()
         jcenter()
@@ -20,6 +21,9 @@ buildscript {
 
         // ktlint
         classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlint_version"
+
+        // hilt dependency injection
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
     }
 }
 

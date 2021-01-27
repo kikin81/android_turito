@@ -3,6 +3,7 @@
     package="us.kikin.apps.android.turito">
 
     <application
+        android:name=".ToritoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
