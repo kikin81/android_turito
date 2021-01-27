@@ -9,5 +9,5 @@ interface BusinessService {
     suspend fun businessSearchForLocation(
         @Query("term") searchTerm: String,
         @Query("location") address: String
-    )
+    ): BusinessSearchResponse
 }
