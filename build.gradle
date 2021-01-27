@@ -3,6 +3,9 @@ buildscript {
     ext.kotlin_version = "1.4.21"
     ext.ktlint_version = "9.4.1"
     ext.navigation_version = "2.3.3"
+    ext.lifecycle_version = "2.2.0"
+    ext.retrofit_version = "2.9.0"
+    ext.okhttp_version = "4.9.0"
     repositories {
         google()
         jcenter()

@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import us.kikin.apps.android.turito.R
+import us.kikin.apps.android.turito.databinding.BusinessListFragmentBinding
 
 class BusinessList : Fragment() {
 
+    private var _binding: BusinessListFragmentBinding? = null
+    private val binding get() = requireNotNull(_binding)
     private lateinit var viewModel: BusinessListViewModel
 
     override fun onCreateView(
@@ -17,11 +19,17 @@ class BusinessList : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.business_list_fragment, container, false)
+        _binding = BusinessListFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(BusinessListViewModel::class.java)
+    }
+
+    override fun onDestroy() {
+        _binding = null
+        super.onDestroy()
     }
 }
