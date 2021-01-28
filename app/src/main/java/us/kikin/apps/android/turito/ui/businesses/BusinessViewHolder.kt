@@ -12,6 +12,10 @@ class BusinessViewHolder(
 
     fun bind(business: Business) {
         binding.name.text = business.name
+        binding.price.text = business.price
+        binding.address.text = business.location.displayAddress.joinToString()
+        // TODO: extract to resource string
+        binding.distance.text = "${String.format("%.2f", business.distanceInMiles)} mi"
     }
 
     /**
