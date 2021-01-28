@@ -16,6 +16,7 @@ class BusinessList : Fragment() {
     private var _binding: BusinessListFragmentBinding? = null
     private val binding get() = requireNotNull(_binding)
     private val viewModel: BusinessListViewModel by viewModels()
+    private lateinit var adapter: BusinessAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,14 +30,23 @@ class BusinessList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initAdapter()
+
         viewModel.data.observe(
             viewLifecycleOwner,
             { businesses ->
+                adapter.updateItems(businesses)
+                binding.listProgress.hide()
                 for (business in businesses) {
                     Log.d("FCO", "b: ${business.name}")
                 }
             }
         )
+    }
+
+    private fun initAdapter() {
+        adapter = BusinessAdapter()
+        binding.recyclerView.adapter = adapter
     }
 
     override fun onDestroy() {
