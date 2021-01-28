@@ -1,10 +1,14 @@
 package us.kikin.apps.android.turito
 
+import android.content.Context
+import coil.ImageLoader
+import coil.util.CoilUtils
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -29,7 +33,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(@ApplicationContext appContext: Context): OkHttpClient {
         val clientBuilder = OkHttpClient.Builder()
         if (BuildConfig.DEBUG) {
             // logcat debugger for debug builds
@@ -41,7 +45,21 @@ class AppModule {
         // header authentication
         clientBuilder.addInterceptor(AuthorizationInterceptor())
 
-        return clientBuilder.build()
+        return clientBuilder
+            .cache(CoilUtils.createDefaultCache(appContext))
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideCoilImageLoader(
+        @ApplicationContext appContext: Context,
+        okHttpClient: OkHttpClient,
+    ): ImageLoader {
+        return ImageLoader.Builder(appContext)
+            .crossfade(true)
+            .okHttpClient(okHttpClient)
+            .build()
     }
 
     @Provides

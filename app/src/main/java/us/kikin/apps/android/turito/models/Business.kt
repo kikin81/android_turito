@@ -7,7 +7,9 @@ data class Business(
     val name: String,
     val distance: Double,
     val price: String,
-    val location: Location
+    val location: Location,
+    val imageUrl: String,
+    var isSaved: Boolean = false
 ) {
     constructor(dto: BusinessDto) :
         this(
@@ -15,7 +17,8 @@ data class Business(
             dto.name,
             dto.distance,
             dto.price,
-            Location(dto.location)
+            Location(dto.location),
+            dto.imageUrl
         )
 
     val distanceInMiles: Double by lazy {
