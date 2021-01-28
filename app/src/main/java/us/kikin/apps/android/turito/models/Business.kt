@@ -6,7 +6,7 @@ data class Business(
     val id: String,
     val name: String,
     val distance: Double,
-    val price: String,
+    val price: String?,
     val location: Location,
     val imageUrl: String,
     var isSaved: Boolean = false

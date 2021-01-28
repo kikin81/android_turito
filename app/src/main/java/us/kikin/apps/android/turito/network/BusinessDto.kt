@@ -13,7 +13,7 @@ data class BusinessDto(
     @SerializedName("location") val location: LocationDto,
     @SerializedName("name") val name: String,
     @SerializedName("phone") val phone: String,
-    @SerializedName("price") val price: String,
+    @SerializedName("price") val price: String?,
     @SerializedName("rating") val rating: Double,
     @SerializedName("review_count") val reviewCount: Int,
     @SerializedName("transactions") val transactions: List<String>,
