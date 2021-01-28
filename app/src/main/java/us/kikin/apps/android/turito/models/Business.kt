@@ -21,5 +21,4 @@ data class Business(
     val distanceInMiles: Double by lazy {
         distance * 0.000621371
     }
-
 }
